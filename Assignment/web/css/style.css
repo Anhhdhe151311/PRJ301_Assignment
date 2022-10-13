@@ -17,10 +17,14 @@ thead {
 #table{
     margin: 0 auto;
     width: 60%;
-    height: 300px;
+    height: auto;
     padding: 10px;
 }
 tbody td{
     border-style: none none ridge none;
     border-width: 1px;
+}
+.head{
+    width: 100%;
+    margin: 0 auto;
 }

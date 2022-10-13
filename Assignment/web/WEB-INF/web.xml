@@ -6,6 +6,7 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
+        <welcome-file>course.jsp</welcome-file>
         <welcome-file>schedules_for_classes.jsp</welcome-file>
     </welcome-file-list>
 </web-app>
