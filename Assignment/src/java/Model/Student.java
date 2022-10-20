@@ -4,10 +4,40 @@
  */
 package Model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Admin
  */
 class Student {
+    private int stdid;
+    private String stdname;
+    private ArrayList<Group> groups = new ArrayList<>();
+
+    public int getStdid() {
+        return stdid;
+    }
+
+    public void setStdid(int stdid) {
+        this.stdid = stdid;
+    }
+
+    public String getStdname() {
+        return stdname;
+    }
+
+    public void setStdname(String stdname) {
+        this.stdname = stdname;
+    }
+
+    public ArrayList<Group> getGroups() {
+        return groups;
+    }
+
+    public void setGroups(ArrayList<Group> groups) {
+        this.groups = groups;
+    }
+    
     
 }
