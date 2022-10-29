@@ -14,7 +14,8 @@ import java.util.ArrayList;
 public class TimeSlotDAO extends DBContext{
 
     public ArrayList<TimeSlot> list() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        ArrayList<TimeSlot> slots = new ArrayList<>();
+        return slots;
     }
     
 }
