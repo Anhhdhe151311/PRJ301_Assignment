@@ -64,7 +64,7 @@ public class TimeTableController extends HttpServlet{
         req.setAttribute("sessions", sessions);
         
         
-        Lecturer lecturer = LecturerDAO.getIdNameLecturer(lid);
+        Lecturer lecturer = new LecturerDAO().getIdNameLecturer(lid);
         req.setAttribute("lecturer", lecturer);
         
         req.getRequestDispatcher("../view/lecturer/timetable.jsp").forward(req, resp);
