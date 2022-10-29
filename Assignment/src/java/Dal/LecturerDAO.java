@@ -5,6 +5,11 @@
 package Dal;
 
 import Model.Lecturer;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -12,8 +17,17 @@ import Model.Lecturer;
  */
 public class LecturerDAO extends DBContext{
 
-    public static Lecturer getIdNameLecturer(int lid) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Lecturer getIdNameLecturer(int lid) {
+     
+        try {
+            String sql = "SELECT lid,lname FROM Lecturer WHERE lid = ?";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, lid);
+            ResultSet rs = ps.executeQuery();
+        } catch (SQLException ex) {
+            Logger.getLogger(LecturerDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
     
 }
