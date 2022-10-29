@@ -26,6 +26,12 @@ public class TimeTableController extends HttpServlet{
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        
+        
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
          int lid = Integer.parseInt(req.getParameter("lid"));
         String raw_from = req.getParameter("from");
         String raw_to = req.getParameter("to");
@@ -62,12 +68,6 @@ public class TimeTableController extends HttpServlet{
         req.setAttribute("lecturer", lecturer);
         
         req.getRequestDispatcher("../view/lecturer/timetable.jsp").forward(req, resp);
-        
-    }
-
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doGet(req, resp); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
     }
     
 }
