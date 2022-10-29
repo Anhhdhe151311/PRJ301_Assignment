@@ -16,6 +16,13 @@ public class TimeSlot {
     
     private ArrayList<Session> sessions = new ArrayList<>();
 
+    public TimeSlot(int tid, String dascription) {
+        this.tid = tid;
+        this.dascription = dascription;
+    }
+    
+    
+
     public int getTid() {
         return tid;
     }
