@@ -4,10 +4,18 @@
  */
 package Dal;
 
+import Model.Session;
+import java.sql.Date;
+import java.util.ArrayList;
+
 /**
  *
  * @author Admin
  */
 public class SessionDAO extends DBContext{
+
+    public ArrayList<Session> filter(int lid, Date from, Date to) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
 }
