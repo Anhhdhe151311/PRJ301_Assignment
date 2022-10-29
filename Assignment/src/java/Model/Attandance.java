@@ -10,7 +10,7 @@ import java.sql.Date;
  *
  * @author Admin
  */
-class Attandance {
+public class Attandance {
     private Student student;
     private Session session;
     private boolean present;

@@ -10,7 +10,7 @@ import java.util.ArrayList;
  *
  * @author Admin
  */
-class Room {
+public class Room {
     private int rid;
     private String rname;
     private ArrayList<Session> sessions = new ArrayList<>();

@@ -10,7 +10,7 @@ import java.util.ArrayList;
  *
  * @author Admin
  */
-class TimeSlot {
+public class TimeSlot {
     private int tid;
     private String dascription;
     
