@@ -24,6 +24,10 @@ public class LecturerDAO extends DBContext{
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setInt(1, lid);
             ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                
+                
+            }
         } catch (SQLException ex) {
             Logger.getLogger(LecturerDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
