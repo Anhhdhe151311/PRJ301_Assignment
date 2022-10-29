@@ -12,7 +12,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import util.DateTimeHelper;
-import Model.
+import Model.*;
+import Dal.*;
 
 
 
@@ -49,18 +50,18 @@ public class TimeTableController extends HttpServlet{
         req.setAttribute("dates", DateTimeHelper.getDateList(from, to));
         
         
-        ArrayList<TimeSlot> slots = new Dal.TimeSlotDAO().list();
+        ArrayList<TimeSlot> slots = new TimeSlotDAO().list();
         req.setAttribute("slots", slots);
         
-        SessionDBContext sesDB = new SessionDBContext();
-        ArrayList<Se> sessions = sesDB.filter(lid, from, to);
+        
+        ArrayList<Session> sessions = new SessionDAO().filter(lid, from, to);
         req.setAttribute("sessions", sessions);
         
-        LecturerDBContext lecDB = new LecturerDBContext();
-        Lecturer lecturer = lecDB.get(lid);
+        
+        Lecturer lecturer = LecturerDAO.getIdNameLecturer(lid);
         req.setAttribute("lecturer", lecturer);
         
-        req.getRequestDispatcher("../view/lecturer/timetable.jsp").forward(request, response);
+        req.getRequestDispatcher("../view/lecturer/timetable.jsp").forward(req, resp);
         
     }
 
