@@ -16,6 +16,16 @@ public class Lecturer {
     private ArrayList<Group> group = new ArrayList<>();
     private ArrayList<Session> session = new ArrayList<>();
 
+    public Lecturer(int lid, String lname) {
+        this.lid = lid;
+        this.lname = lname;
+    }
+
+    public Lecturer() {
+    }
+    
+    
+
     public int getLid() {
         return lid;
     }
