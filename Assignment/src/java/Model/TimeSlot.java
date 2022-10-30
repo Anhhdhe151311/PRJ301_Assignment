@@ -12,16 +12,17 @@ import java.util.ArrayList;
  */
 public class TimeSlot {
     private int tid;
-    private String dascription;
+    private String Description;
     
     private ArrayList<Session> sessions = new ArrayList<>();
 
-    public TimeSlot(int tid, String dascription) {
-        this.tid = tid;
-        this.dascription = dascription;
+    public TimeSlot() {
     }
-    
-    
+
+    public TimeSlot(int tid, String Description) {
+        this.tid = tid;
+        this.Description = Description;
+    }
 
     public int getTid() {
         return tid;
@@ -31,12 +32,12 @@ public class TimeSlot {
         this.tid = tid;
     }
 
-    public String getDascription() {
-        return dascription;
+    public String getDescription() {
+        return Description;
     }
 
-    public void setDascription(String dascription) {
-        this.dascription = dascription;
+    public void setDescription(String Description) {
+        this.Description = Description;
     }
 
     public ArrayList<Session> getSessions() {
@@ -46,7 +47,7 @@ public class TimeSlot {
     public void setSessions(ArrayList<Session> sessions) {
         this.sessions = sessions;
     }
-    
+
     
     
     
