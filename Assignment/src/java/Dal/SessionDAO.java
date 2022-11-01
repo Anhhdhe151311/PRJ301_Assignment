@@ -75,7 +75,7 @@ public class SessionDAO extends DBContext{
                 
                 t.setTid(rs.getInt("tid"));
                 t.setDescription(rs.getString("description"));
-                session.setTimeSlot(t);
+                session.setTimeslot(t);
                 sessions.add(session);
             }
     }catch (SQLException ex) {
