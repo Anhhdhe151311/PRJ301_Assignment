@@ -16,7 +16,7 @@ public class Session {
     private Group group;
     private Room room;
     private Date date;
-    private TimeSlot timeSlot;
+    private TimeSlot timeslot;
     private int index;
     private Lecturer lecturer;
     private boolean attanded;
@@ -25,10 +25,6 @@ public class Session {
     public Session() {
     }
 
-    
-    
-    
-    
     public int getSesid() {
         return sesid;
     }
@@ -61,12 +57,12 @@ public class Session {
         this.date = date;
     }
 
-    public TimeSlot getTimeSlot() {
-        return timeSlot;
+    public TimeSlot getTimeslot() {
+        return timeslot;
     }
 
-    public void setTimeSlot(TimeSlot timeSlot) {
-        this.timeSlot = timeSlot;
+    public void setTimeslot(TimeSlot timeslot) {
+        this.timeslot = timeslot;
     }
 
     public int getIndex() {
@@ -100,6 +96,12 @@ public class Session {
     public void setAtts(ArrayList<Attandance> atts) {
         this.atts = atts;
     }
+
+    
+    
+    
+    
+   
     
     
     
