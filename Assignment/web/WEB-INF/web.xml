@@ -16,6 +16,10 @@
         <servlet-name>TestController</servlet-name>
         <servlet-class>Test.TestController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>TakeAttController</servlet-name>
+        <servlet-class>LectureController.TakeAttController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>TimeTableController</servlet-name>
         <url-pattern>/lecturer/timetable</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>TestController</servlet-name>
         <url-pattern>/test</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TakeAttController</servlet-name>
+        <url-pattern>/lecturer/takeatt</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
