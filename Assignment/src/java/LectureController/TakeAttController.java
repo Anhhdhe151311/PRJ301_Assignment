@@ -44,12 +44,12 @@ public class TakeAttController extends HttpServlet{
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int sesid = 1;
+        int sesid = 24;
         Session ses =new SessionDAO().get(sesid);
         req.setAttribute("ses", ses);
         ArrayList<Attandance> atts =new AttandanceDAO().getAttsBySessionId(sesid);
         req.setAttribute("atts", atts);
-        req.getRequestDispatcher("").forward(req, resp);
+        req.getRequestDispatcher("../view/lecturer/takeatt.jsp").forward(req, resp);
     }
     
 }

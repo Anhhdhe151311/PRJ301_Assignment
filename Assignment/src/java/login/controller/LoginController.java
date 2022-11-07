@@ -26,7 +26,14 @@ public class LoginController extends HttpServlet{
         if(account!=null)
         {
             req.getSession().setAttribute("account", account);
-            resp.getWriter().println("login successful!");
+            
+            if(account.getRole()==2){
+                req.getRequestDispatcher("view/student/welcomestudent.jsp").forward(req, resp);
+               
+            }
+            else if(account.getRole()==1){
+                req.getRequestDispatcher("view/lecturer/welcomelecturer.jsp").forward(req, resp);
+            }
         }
         else
         {
