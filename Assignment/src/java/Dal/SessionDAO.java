@@ -52,28 +52,28 @@ public class SessionDAO extends DBContext{
                 TimeSlot t = new TimeSlot();
                 Subject sub = new Subject();
                 
-                session.setSesid(rs.getInt("sesid"));
+                session.setId(rs.getInt("sesid"));
                 session.setDate(rs.getDate("date"));
                 session.setIndex(rs.getInt("index"));
                 session.setAttanded(rs.getBoolean("attanded"));
                 
-                l.setLid(rs.getInt("lid"));
-                l.setLname(rs.getString("lname"));
+                l.setId(rs.getInt("lid"));
+                l.setName(rs.getString("lname"));
                 session.setLecturer(l);
                 
-                g.setGid(rs.getInt("gid"));
-                g.setGname(rs.getString("gname"));
+                g.setId(rs.getInt("gid"));
+                g.setName(rs.getString("gname"));
                 session.setGroup(g);
                 
-                sub.setSubid(rs.getInt("subid"));
-                sub.setSubname(rs.getString("subname"));
+                sub.setId(rs.getInt("subid"));
+                sub.setName(rs.getString("subname"));
                 g.setSubject(sub);
                 
-                r.setRid(rs.getInt("rid"));
-                r.setRname(rs.getString("rname"));
+                r.setId(rs.getInt("rid"));
+                r.setName(rs.getString("rname"));
                 session.setRoom(r);
                 
-                t.setTid(rs.getInt("tid"));
+                t.setId(rs.getInt("tid"));
                 t.setDescription(rs.getString("description"));
                 session.setTimeslot(t);
                 sessions.add(session);

@@ -2,29 +2,27 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package login.controller;
+package Test;
 
+import Model.Account;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  *
  * @author Admin
  */
-public class LogoutController extends HttpServlet{
+public class TestController extends HttpServlet{
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        if(req.getSession().getAttribute("account")!=null){
-            req.getSession().removeAttribute("account");
-            resp.getWriter().println("logout successful!");
-        }
-        else
-            resp.getWriter().println("logout faile!");
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        Account acc = (Account)req.getSession().getAttribute("account");
+         resp.getWriter().println(acc.getRole());
+        
     }
-    
     
 }

@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * @author Admin
  */
 public class TimeSlot {
-    private int tid;
+    private int id;
     private String Description;
     
     private ArrayList<Session> sessions = new ArrayList<>();
@@ -19,18 +19,20 @@ public class TimeSlot {
     public TimeSlot() {
     }
 
-    public TimeSlot(int tid, String Description) {
-        this.tid = tid;
+    public TimeSlot(int id, String Description) {
+        this.id = id;
         this.Description = Description;
     }
 
-    public int getTid() {
-        return tid;
+    public int getId() {
+        return id;
     }
 
-    public void setTid(int tid) {
-        this.tid = tid;
+    public void setId(int id) {
+        this.id = id;
     }
+
+    
 
     public String getDescription() {
         return Description;

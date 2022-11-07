@@ -11,25 +11,35 @@ import java.util.ArrayList;
  * @author Admin
  */
 public class Room {
-    private int rid;
-    private String rname;
+    private int id;
+    private String name;
     private ArrayList<Session> sessions = new ArrayList<>();
 
-    public int getRid() {
-        return rid;
+    public Room() {
     }
 
-    public void setRid(int rid) {
-        this.rid = rid;
+    public Room(int id, String name) {
+        this.id = id;
+        this.name = name;
     }
 
-    public String getRname() {
-        return rname;
+    public int getId() {
+        return id;
     }
 
-    public void setRname(String rname) {
-        this.rname = rname;
+    public void setId(int id) {
+        this.id = id;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+   
 
     public ArrayList<Session> getSessions() {
         return sessions;

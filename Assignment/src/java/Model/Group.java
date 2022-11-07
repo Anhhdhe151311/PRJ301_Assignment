@@ -11,8 +11,8 @@ import java.util.ArrayList;
  * @author Admin
  */
 public class Group {
-    private int gid;
-    private String gname;
+    private int id;
+    private String name;
     private Subject subject;
     private Lecturer lecturer;
     private ArrayList<Session> sessions = new ArrayList<>();
@@ -20,21 +20,35 @@ public class Group {
     private String sem;
     private int year;
 
-    public int getGid() {
-        return gid;
+    public Group() {
     }
 
-    public void setGid(int gid) {
-        this.gid = gid;
+    public Group(int id, String name, Subject subject, Lecturer lecturer, String sem, int year) {
+        this.id = id;
+        this.name = name;
+        this.subject = subject;
+        this.lecturer = lecturer;
+        this.sem = sem;
+        this.year = year;
     }
 
-    public String getGname() {
-        return gname;
+    public int getId() {
+        return id;
     }
 
-    public void setGname(String gname) {
-        this.gname = gname;
+    public void setId(int id) {
+        this.id = id;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    
 
     public Subject getSubject() {
         return subject;

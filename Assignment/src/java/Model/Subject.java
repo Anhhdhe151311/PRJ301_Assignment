@@ -11,25 +11,35 @@ import java.util.ArrayList;
  * @author Admin
  */
 public class Subject {
-     private int subid;
-     private String subname;
+     private int id;
+     private String name;
      private ArrayList<Group> groups = new ArrayList<>();
 
-    public int getSubid() {
-        return subid;
+    public Subject() {
     }
 
-    public void setSubid(int subid) {
-        this.subid = subid;
+    public Subject(int id, String name) {
+        this.id = id;
+        this.name = name;
     }
 
-    public String getSubname() {
-        return subname;
+    public int getId() {
+        return id;
     }
 
-    public void setSubname(String subname) {
-        this.subname = subname;
+    public void setId(int id) {
+        this.id = id;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+   
 
     public ArrayList<Group> getGroups() {
         return groups;

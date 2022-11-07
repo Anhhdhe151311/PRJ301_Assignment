@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * @author Admin
  */
 public class Session {
-    private int sesid;
+    private int id;
     private Group group;
     private Room room;
     private Date date;
@@ -25,13 +25,17 @@ public class Session {
     public Session() {
     }
 
-    public int getSesid() {
-        return sesid;
+    public int getId() {
+        return id;
     }
 
-    public void setSesid(int sesid) {
-        this.sesid = sesid;
+    public void setId(int id) {
+        this.id = id;
     }
+
+    
+
+    
 
     public Group getGroup() {
         return group;

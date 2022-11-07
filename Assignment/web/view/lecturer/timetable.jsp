@@ -14,9 +14,9 @@
         <title>JSP Page</title>
     </head>
     <body>
-        Lecturer: <input type="text" readonly="readonly" value="${requestScope.lecturer.lname}"/>
+        Lecturer: <input type="text" readonly="readonly" value="${requestScope.lecturer.name}"/>
         <form action="timetable" method="GET">
-            <input type="hidden" name="lid" value="${param.lid}"/>
+            <input type="hidden" name="lid" value="${param.id}"/>
             From: <input type="date" name="from" value="${requestScope.from}"/>
             To: <input type="date" name="to" value="${requestScope.to}"/>
             <input type="submit" value="View"/> 
@@ -34,15 +34,15 @@
                     <c:forEach items="${requestScope.dates}" var="d">
                         <td>
                             <c:forEach items="${requestScope.sessions}" var="ses">
-                                <c:if test="${helper.compare(ses.getDate(),d) eq 0 and (ses.timeslot.tid eq slot.tid)}">
-                                    <a href="att?id=${ses.sesid}">${ses.group.gname}-${ses.group.subject.subname}</a>
+                                <c:if test="${helper.compare(ses.getDate(),d) eq 0 and (ses.timeslot.id eq slot.id)}">
+                                    <a href="att?id=${ses.id}">${ses.group.name}-${ses.group.subject.name}</a>
                                     <br/>
-                                    ${ses.room.rname}
+                                    ${ses.room.name}<br>
                                     <c:if test="${ses.attanded}">
-                                        <img src="../img/male-icon.png" alt=""/>
+                                        ( <a style="color: green">Atteanded</a> )
                                     </c:if>
                                     <c:if test="${!ses.attanded}">
-                                        <img src="../img/female-icon.png" alt=""/>
+                                       ( <a style="color: red">Not Yet</a> )
                                     </c:if>
                                 </c:if> 
                                   

@@ -11,25 +11,27 @@ import java.util.ArrayList;
  * @author Admin
  */
 public class Student {
-    private int stdid;
-    private String stdname;
+    private int id;
+    private String name;
     private ArrayList<Group> groups = new ArrayList<>();
 
-    public int getStdid() {
-        return stdid;
+    public int getId() {
+        return id;
     }
 
-    public void setStdid(int stdid) {
-        this.stdid = stdid;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getStdname() {
-        return stdname;
+    public String getName() {
+        return name;
     }
 
-    public void setStdname(String stdname) {
-        this.stdname = stdname;
+    public void setName(String name) {
+        this.name = name;
     }
+
+    
 
     public ArrayList<Group> getGroups() {
         return groups;
