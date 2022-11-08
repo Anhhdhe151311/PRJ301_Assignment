@@ -15,7 +15,7 @@
     <body>
         <div style="background-color: brown">${requestScope.account.displayname} |<a href="logout">logout</a></div>
         <h1>Welcome Student</h1>
-        <p><a href="student/attreport?stdid=${student.id}&gid=">AttendanceReport</a></p>
+        <p><a href="student/attreport?stdid=${student.id}">AttendanceReport</a></p>
         
     </body>
 </html>

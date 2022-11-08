@@ -56,31 +56,44 @@ public class AttandanceDAO extends DBContext {
     public ArrayList<Attandance> getCheckAttendance(int stdid, int gid) {
         ArrayList<Attandance> atts = new ArrayList<>();
         try {
-            String sql = "SELECT * from [Attandance] att \n"
-                    + "INNER JOIN [Session] ses on att.sesid = ses.sesid \n"
-                    + "Inner join [Group] g on ses.gid = g.gid\n"
-                    + "Inner Join [Subject] s on g.subid = s.subid\n"
-                    + "where att.stdid =? and g.gid=? ";
+            String sql = "SELECT ses.[date],t.[description],r.rname,l.lname,g.gname,a.present,a.[description]\n"
+                    + "                    			FROM [Session] ses\n"
+                    + "						INNER JOIN [TimeSlot] t on ses.tid=t.tid\n"
+                    + "						INNER JOIN [Room] r on ses.rid = r.rid\n"
+                    + "                    			INNER JOIN [Group] g ON ses.gid = g.gid\n"
+                    + "                 			INNER JOIN Student_Group sg ON g.gid = sg.gid\n"
+                    + "                    			INNER JOIN Student std ON std.stdid = sg.stdid\n"
+                    + "						INNER JOIN Lecturer l ON ses.lid = l.lid\n"
+                    + "                    			LEFT JOIN Attandance a ON a.sesid = ses.sesid AND std.stdid = a.stdid\n"
+                    + "                    WHERE std.stdid = ? and g.gid=?";
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setInt(1, stdid);
             ps.setInt(2, gid);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                Attandance att = new Attandance();
                 Session ses = new Session();
+                TimeSlot t = new TimeSlot();
+                Room r = new Room();
+                Lecturer l = new Lecturer();
                 Group g = new Group();
-                Subject s = new Subject();
-
-                s.setName(rs.getString("subname"));
-                s.setFullslot(rs.getInt("fullslot"));
-                g.setName(rs.getString("gname"));
-                ses.setDate(rs.getDate("date"));
-                att.setPresent(rs.getBoolean("present"));
-
-                g.setSubject(s);
+                Attandance a = new Attandance();
+                
+                ses.setDate(rs.getDate(1));
+                t.setDescription(rs.getString(2));
+                r.setName(rs.getString(3));
+                l.setName(rs.getString(4));
+                g.setName(rs.getString(5));
+                a.setPresent(rs.getBoolean(6));
+                a.setDescription(rs.getString(7));
+                
+                ses.setTimeslot(t);
+                ses.setRoom(r);
+                ses.setLecturer(l);
                 ses.setGroup(g);
-                att.setSession(ses);
-                atts.add(att);
+                a.setSession(ses);
+                atts.add(a);
+                
+                
             }
         } catch (SQLException ex) {
             Logger.getLogger(AttandanceDAO.class.getName()).log(Level.SEVERE, null, ex);
