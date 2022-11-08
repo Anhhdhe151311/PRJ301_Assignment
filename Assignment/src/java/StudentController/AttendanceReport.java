@@ -4,11 +4,13 @@
  */
 package StudentController;
 
+import Model.*;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  *
@@ -18,12 +20,44 @@ public class AttendanceReport extends HttpServlet{
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+        int stdid = Integer.parseInt(req.getParameter("stdid"));
+        int gid = Integer.parseInt(req.getParameter("gid"));
+        int subid = Integer.parseInt(req.getParameter("subid"));
+        Account acc = (Account)req.getSession().getAttribute("account");
+        req.setAttribute("account", acc);
+        ArrayList<Student> students = new Dal.StudentDAO().getStudentGroup(stdid);
+        req.setAttribute("students", students);
+        Student student = new Dal.StudentDAO().getAllStudent(stdid);
+        req.setAttribute("student",student);
+        Subject subject = new Dal.SubjectDAO().getSubject(subid);
+        req.setAttribute("subject", subject);
+        
+          if (acc.getRole() == 1) {
+              
+            ArrayList<Attandance> attandances = new Dal.AttandanceDAO().getCheckAttendance(stdid,gid);
+            req.setAttribute("attandances", attandances);
+            req.getRequestDispatcher("../view/student/attendancerepost.jsp").forward(req, resp);
+            }else {
+                resp.sendRedirect(req.getContextPath() + "/index.jsp");
+            }
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doGet(req, resp); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+        int stdid = Integer.parseInt(req.getParameter("stdid"));
+        Account acc = (Account)req.getSession().getAttribute("account");
+        req.setAttribute("account", acc);
+        ArrayList<Student> students = new Dal.StudentDAO().getStudentGroup(stdid);
+        req.setAttribute("students", students);
+        Student student = new Dal.StudentDAO().getAllStudent(stdid);
+        req.setAttribute("student",student);
+        
+          if (acc.getRole() == 1) {
+            req.getRequestDispatcher("../view/student/attendancerepost.jsp").forward(req, resp);
+            }else {
+                resp.sendRedirect(req.getContextPath() + "/index.jsp");
+            }
+          
     }
     
 }
