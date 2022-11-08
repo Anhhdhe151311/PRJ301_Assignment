@@ -44,7 +44,7 @@ public class TakeAttController extends HttpServlet{
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int sesid = 24;
+        int sesid = Integer.parseInt(req.getParameter("id"));
         Session ses =new SessionDAO().get(sesid);
         req.setAttribute("ses", ses);
         ArrayList<Attandance> atts =new AttandanceDAO().getAttsBySessionId(sesid);
