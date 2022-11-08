@@ -22,7 +22,12 @@ public class TestController extends HttpServlet{
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Account acc = (Account)req.getSession().getAttribute("account");
          resp.getWriter().println(acc.getRole());
-        
+         //data
+//SELECT * from [Attandance] att 
+//INNER JOIN [Session] ses on att.sesid = ses.sesid 
+//Inner join [Group] g on ses.gid = g.gid
+//Inner Join [Subject] s on g.subid = s.subid
+//where att.stdid = 1 and s.subid=1 
     }
     
 }
