@@ -5,9 +5,11 @@
 package Dal;
 
 import Model.Account;
+import Model.Session;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -42,5 +44,7 @@ public class AccountDAO extends DBContext{
     public static void main(String[] args) {
         
     }
+
+    
     
 }
