@@ -91,4 +91,8 @@ public class StudentDAO extends DBContext {
         return students;
     }
 
+    public Student getIdNameLecturer(int stdid) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
 }

@@ -15,9 +15,9 @@
     </head>
     <body>
         
-        <form action="timetable" method="GET">
-            Lecturer: <input type="text"  value="${requestScope.lecturer.name}"/>
-            <input type="hidden" name="lid" value="${param.lid}"/>
+        <form action="time" method="get">
+            Lecturer: <input type="text"  value="${requestScope.student.name}"/>
+            <input type="hidden" name="stdid" value="${param.stdid}"/>
             From: <input type="date" name="from" value="${requestScope.from}"/>
             To: <input type="date" name="to" value="${requestScope.to}"/>
             <input type="submit" value="View"/> 

@@ -179,4 +179,61 @@ public class SessionDAO extends DBContext {
             Logger.getLogger(SessionDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    public ArrayList<Session> filterStudent(int stdid, Date from, Date to) {
+        ArrayList<Session> sessions = new ArrayList<>();
+        try {
+            String sql = "SELECT  \n"
+                    + "	ses.sesid,ses.[date],ses.[index],ses.attanded,std.stdid,std.stdname,\n"
+                    + "					g.gid,g.gname,sub.subid,sub.subname,r.rid,r.rname,t.tid,t.[description]"
+                    + "FROM [Session] ses \n"
+                    + "			INNER JOIN Lecturer l ON l.lid = ses.lid\n"
+                    + "			INNER JOIN [Group] g ON g.gid = ses.gid\n"
+                    + "			INNER JOIN [Subject] sub ON sub.subid = g.subid\n"
+                    + "			INNER JOIN Room r ON r.rid = ses.rid\n"
+                    + "			INNER JOIN TimeSlot t ON t.tid = ses.tid\n"
+                    + "WHERE\n"
+                    + "l.lid = ?\n"
+                    + "AND ses.[date] >= ?\n"
+                    + "AND ses.[date] <= ?";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, stdid);
+            ps.setDate(2, from);
+            ps.setDate(3, to);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Session session = new Session();
+                Student s = new Student();
+                Room r = new Room();
+                Group g = new Group();
+                TimeSlot t = new TimeSlot();
+                Subject sub = new Subject();
+
+                session.setId(rs.getInt("sesid"));
+                session.setDate(rs.getDate("date"));
+                session.setIndex(rs.getInt("index"));
+                session.setAttanded(rs.getBoolean("attanded"));
+
+                g.setId(rs.getInt("gid"));
+                g.setName(rs.getString("gname"));
+                session.setGroup(g);
+
+                sub.setId(rs.getInt("subid"));
+                sub.setName(rs.getString("subname"));
+                g.setSubject(sub);
+
+                r.setId(rs.getInt("rid"));
+                r.setName(rs.getString("rname"));
+                session.setRoom(r);
+
+                t.setId(rs.getInt("tid"));
+                t.setDescription(rs.getString("description"));
+                session.setTimeslot(t);
+                sessions.add(session);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(SessionDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return sessions;
+    }
 }
