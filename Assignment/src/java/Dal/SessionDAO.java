@@ -184,8 +184,12 @@ public class SessionDAO extends DBContext {
         ArrayList<Session> sessions = new ArrayList<>();
         try {
             String sql = "SELECT  \n"
-                    + "	ses.sesid,ses.[date],ses.[index],ses.attanded,std.stdid,std.stdname,\n"
-                    + "					g.gid,g.gname,sub.subid,sub.subname,r.rid,r.rname,t.tid,t.[description]"
+                    + "	ses.sesid,ses.[date],ses.[index],ses.attanded\n" +
+"                    	,l.lid,l.lname\n" +
+"                    	,g.gid,g.gname\n" +
+"                    	,sub.subid,sub.subname\n" +
+"                    	,r.rid,r.rname\n" +
+"                    	,t.tid,t.[description]"
                     + "FROM [Session] ses \n"
                     + "			INNER JOIN Lecturer l ON l.lid = ses.lid\n"
                     + "			INNER JOIN [Group] g ON g.gid = ses.gid\n"
@@ -202,8 +206,8 @@ public class SessionDAO extends DBContext {
             ps.setDate(3, to);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                Session session = new Session();
-                Student s = new Student();
+                 Session session = new Session();
+                Lecturer l = new Lecturer();
                 Room r = new Room();
                 Group g = new Group();
                 TimeSlot t = new TimeSlot();
@@ -213,6 +217,10 @@ public class SessionDAO extends DBContext {
                 session.setDate(rs.getDate("date"));
                 session.setIndex(rs.getInt("index"));
                 session.setAttanded(rs.getBoolean("attanded"));
+
+                l.setId(rs.getInt("lid"));
+                l.setName(rs.getString("lname"));
+                session.setLecturer(l);
 
                 g.setId(rs.getInt("gid"));
                 g.setName(rs.getString("gname"));
