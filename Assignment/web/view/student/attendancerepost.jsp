@@ -32,9 +32,9 @@
                 <tr><th>No</th><th>Date</th><th>Slot</th>
                     <th>Room</th><th>Lecturer</th><th>Group Name</th>
                     <th>Attedance status</th><th>Lecturer's comment</th></tr>
-                        <% int no = 1; %>
-
-
+                        <% int no = 1; 
+                         double percent=1;
+                         int absent=0;%>
                 <c:forEach var="a" items="${requestScope.attandances}">
                     <tr>
                         <td>
@@ -66,6 +66,7 @@
                                     </c:if>
                                     <c:if test="${a.present==false}">
                                         <p style="color: red">Absent</p>
+                                        <% absent++ ;%>
                                     </c:if>
                                 </c:when>
                             </c:choose>
@@ -77,10 +78,9 @@
                     </tr>
                 </c:forEach>
 
-
-
             </table>
-
+            
+            <p>ABSENT: <%=(double)Math.round(absent*100/(no-1)) %> % ABSENT SO FAR (<%=absent%> ABSENT ON <%=no-1%> TOTAL).</p>
         </c:if>   
     </body>
 </html>
