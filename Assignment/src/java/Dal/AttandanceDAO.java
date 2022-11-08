@@ -17,7 +17,7 @@ import Model.*;
  *
  * @author Admin
  */
-public class AttandanceDAO extends DBContext{
+public class AttandanceDAO extends DBContext {
 
     public ArrayList<Attandance> getAttsBySessionId(int sesid) {
         ArrayList<Attandance> atts = new ArrayList<>();
@@ -34,8 +34,7 @@ public class AttandanceDAO extends DBContext{
             PreparedStatement stm = connection.prepareStatement(sql);
             stm.setInt(1, sesid);
             ResultSet rs = stm.executeQuery();
-            while(rs.next())
-            {
+            while (rs.next()) {
                 Attandance att = new Attandance();
                 Student s = new Student();
                 att.setStudent(s);
@@ -53,5 +52,40 @@ public class AttandanceDAO extends DBContext{
         }
         return atts;
     }
-    
+
+    public ArrayList<Attandance> getCheckAttendance(int stdid, int gid) {
+        ArrayList<Attandance> atts = new ArrayList<>();
+        try {
+            String sql = "SELECT * from [Attandance] att \n"
+                    + "INNER JOIN [Session] ses on att.sesid = ses.sesid \n"
+                    + "Inner join [Group] g on ses.gid = g.gid\n"
+                    + "Inner Join [Subject] s on g.subid = s.subid\n"
+                    + "where att.stdid =? and g.gid=? ";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, stdid);
+            ps.setInt(2, gid);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Attandance att = new Attandance();
+                Session ses = new Session();
+                Group g = new Group();
+                Subject s = new Subject();
+
+                s.setName(rs.getString("subname"));
+                s.setFullslot(rs.getInt("fullslot"));
+                g.setName(rs.getString("gname"));
+                ses.setDate(rs.getDate("date"));
+                att.setPresent(rs.getBoolean("present"));
+
+                g.setSubject(s);
+                ses.setGroup(g);
+                att.setSession(ses);
+                atts.add(att);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AttandanceDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return atts;
+    }
+
 }
