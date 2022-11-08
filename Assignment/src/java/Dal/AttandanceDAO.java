@@ -56,7 +56,7 @@ public class AttandanceDAO extends DBContext {
     public ArrayList<Attandance> getCheckAttendance(int stdid, int gid) {
         ArrayList<Attandance> atts = new ArrayList<>();
         try {
-            String sql = "SELECT ses.[date],t.[description],r.rname,l.lname,g.gname,a.present,a.[description]\n"
+            String sql = "SELECT ses.[date],t.[description],r.rname,l.lname,g.gname,a.present,a.[description],ses.attanded\n"
                     + "                    			FROM [Session] ses\n"
                     + "						INNER JOIN [TimeSlot] t on ses.tid=t.tid\n"
                     + "						INNER JOIN [Room] r on ses.rid = r.rid\n"
@@ -85,6 +85,7 @@ public class AttandanceDAO extends DBContext {
                 g.setName(rs.getString(5));
                 a.setPresent(rs.getBoolean(6));
                 a.setDescription(rs.getString(7));
+                ses.setAttanded(rs.getBoolean(8));
                 
                 ses.setTimeslot(t);
                 ses.setRoom(r);

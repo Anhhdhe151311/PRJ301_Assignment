@@ -27,48 +27,60 @@
         <c:forEach var="a" items="${requestScope.students}">
             <a href="attreport?stdid=${requestScope.student.id}&subid=${a.group.subject.id}&gid=${a.group.id}">${a.group.name}(${a.group.subject.name})<br> </a>
             </c:forEach>
-
-        <table border="1">
-            <tr><th>No</th><th>Date</th><th>Slot</th>
-                <th>Room</th><th>Lecturer</th><th>Group Name</th>
-                <th>Attedance status</th><th>Lecturer's comment</th></tr>
-                    <% int no = 1; %>
-
-
-            <c:forEach var="a" items="${requestScope.attandances}">
-                <tr>
-                    <td>
-                        <%=no%> <%no++;%>
-                    </td>
-                    <td>
-                        ${a.session.date}
-                    </td>
-                    <td>
-                        ${a.session.timeslot.description}
-                    </td>
-                    <td>
-                        ${a.session.room.name}
-                    </td>
-                    <td>
-                        ${a.session.lecturer.name}
-                    </td>
-                    <td>
-                        ${a.session.group.name}
-                    </td>
-   
-                    <td>
-                        ${a.present}
-                    </td>
-                    <td>
-                        ${a.description}
-                    </td>
-                </tr>
-            </c:forEach>
+            <c:if test="${requestScope.attandances!=null}">
+            <table border="1">
+                <tr><th>No</th><th>Date</th><th>Slot</th>
+                    <th>Room</th><th>Lecturer</th><th>Group Name</th>
+                    <th>Attedance status</th><th>Lecturer's comment</th></tr>
+                        <% int no = 1; %>
 
 
+                <c:forEach var="a" items="${requestScope.attandances}">
+                    <tr>
+                        <td>
+                            <%=no%> <%no++;%>
+                        </td>
+                        <td>
+                            ${a.session.date}
+                        </td>
+                        <td>
+                            ${a.session.timeslot.description}
+                        </td>
+                        <td>
+                            ${a.session.room.name}
+                        </td>
+                        <td>
+                            ${a.session.lecturer.name}
+                        </td>
+                        <td>
+                            ${a.session.group.name}
+                        </td>
+                        <td>
+                            <c:choose>
+                                <c:when test="${a.session.attanded==false}">
+                                    <p>not yet</p>
+                                </c:when>
+                                <c:when test="${a.session.attanded==true}">
+                                    <c:if test="${a.present==true}">
+                                        <p style="color: chartreuse">Present</p>
+                                    </c:if>
+                                    <c:if test="${a.present==false}">
+                                        <p style="color: red">Absent</p>
+                                    </c:if>
+                                </c:when>
+                            </c:choose>
 
-        </table>
+                        </td>
+                        <td>
+                            ${a.description}
+                        </td>
+                    </tr>
+                </c:forEach>
 
 
+
+            </table>
+
+        </c:if>   
     </body>
 </html>
