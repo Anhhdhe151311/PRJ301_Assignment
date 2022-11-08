@@ -13,6 +13,7 @@ import java.util.ArrayList;
 public class Subject {
      private int id;
      private String name;
+     private int fullslot;
      private ArrayList<Group> groups = new ArrayList<>();
 
     public Subject() {
@@ -21,6 +22,14 @@ public class Subject {
     public Subject(int id, String name) {
         this.id = id;
         this.name = name;
+    }
+
+    public int getFullslot() {
+        return fullslot;
+    }
+
+    public void setFullslot(int fullslot) {
+        this.fullslot = fullslot;
     }
 
     public int getId() {
