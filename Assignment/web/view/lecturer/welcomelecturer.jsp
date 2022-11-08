@@ -1,3 +1,4 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%-- 
     Document   : welcomelecturer
     Created on : Nov 8, 2022, 12:14:42 AM
@@ -12,6 +13,11 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>
+            <div style="background-color: brown">${requestScope.account.displayname} |<a href="logout">logout</a></div>
+            <h1>Welcome Lecturer</h1>
+            <div><a href="lecturer/timetable?lid=1">TimeTable</a></div>
+            
+        </h1>
     </body>
 </html>

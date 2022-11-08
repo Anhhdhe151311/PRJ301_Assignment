@@ -21,17 +21,18 @@ public class LoginController extends HttpServlet{
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
        String username = req.getParameter("username");
         String password = req.getParameter("password");
-         
+        
         Account account =new Dal.AccountDAO().get(username, password);
+        req.setAttribute("account", account);
         if(account!=null)
         {
             req.getSession().setAttribute("account", account);
             
-            if(account.getRole()==2){
+            if(account.getRole()==1){
                 req.getRequestDispatcher("view/student/welcomestudent.jsp").forward(req, resp);
                
             }
-            else if(account.getRole()==1){
+            else if(account.getRole()==2){
                 req.getRequestDispatcher("view/lecturer/welcomelecturer.jsp").forward(req, resp);
             }
         }
