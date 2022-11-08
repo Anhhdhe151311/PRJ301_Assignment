@@ -63,6 +63,8 @@ public class TimeTableController extends HttpServlet {
 
                 Lecturer lecturer = new LecturerDAO().getIdNameLecturer(lid);
                 req.setAttribute("lecturer", lecturer);
+                
+                req.setAttribute("account", acc);
             } else {
                 resp.sendRedirect(req.getContextPath() + "/index.jsp");
             }

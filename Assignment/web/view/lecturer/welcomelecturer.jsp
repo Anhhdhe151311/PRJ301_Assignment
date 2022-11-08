@@ -14,7 +14,7 @@
     </head>
     <body>
         <h1>
-            <div style="background-color: brown">${requestScope.account.displayname} |<a href="logout">logout</a></div>
+            <div style="background-color: brown"><h1><a href="../view/lecturer/welcomelecturer.jsp">Home</a></h1>${requestScope.account.displayname} |<a href="logout">logout</a></div>
             <h1>Welcome Lecturer</h1>
             <div><a href="lecturer/timetable?lid=1">TimeTable</a></div>
             

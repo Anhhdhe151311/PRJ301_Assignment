@@ -65,6 +65,8 @@ public class TimetableController extends HttpServlet{
             
             Student student = new StudentDAO().getAllStudent(stdid);
             req.setAttribute("student", student);
+            
+            req.setAttribute("account", acc);
         } else {
             resp.sendRedirect(req.getContextPath() + "/index.jsp");
         }

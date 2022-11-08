@@ -13,6 +13,7 @@
         <title>JSP Page</title>
     </head>
     <body>
+         <div style="background-color: brown"><h1><a href="../view/lecturer/welcomelecturer.jsp">Home</a></h1>${requestScope.account.displayname} |<a href="../logout">logout</a></div>
         ${requestScope.ses.id}, class: ${requestScope.ses.group.name} 
         <br/>
         Subject: ${requestScope.ses.group.subject.name}

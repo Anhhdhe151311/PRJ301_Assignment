@@ -13,10 +13,8 @@
         <title>JSP Page</title>
     </head>
     <body>
-
-        <div>
-            <div style="background-color: brown">${requestScope.account.displayname} |<a href="logout">logout</a></div>
-        </div>
+         <div style="background-color: brown"><h1><a href="../view/student/welcomelecturer.jsp">Home</a></h1>${requestScope.account.displayname} |<a href="../logout">logout</a></div>
+        
 
         Id: ${requestScope.student.id}<br>
         Name: ${requestScope.student.name}<br>

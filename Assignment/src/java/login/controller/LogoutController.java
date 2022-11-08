@@ -20,10 +20,10 @@ public class LogoutController extends HttpServlet{
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if(req.getSession().getAttribute("account")!=null){
             req.getSession().removeAttribute("account");
-            resp.getWriter().println("logout successful!");
+            resp.sendRedirect("login");
         }
         else
-            resp.getWriter().println("logout faile!");
+            resp.getWriter().println("login");
     }
 
     @Override

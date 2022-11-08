@@ -14,7 +14,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        
+         <div style="background-color: brown"><h1><a href="../view/lecturer/welcomelecturer.jsp">Home</a></h1>${requestScope.account.displayname} |<a href="../logout">logout</a></div>
         <form action="timetable" method="GET">
             Lecturer: <input type="text"  value="${requestScope.lecturer.name}"/>
             <input type="hidden" name="lid" value="${param.lid}"/>
