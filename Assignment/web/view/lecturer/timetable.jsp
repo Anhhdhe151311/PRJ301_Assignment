@@ -14,8 +14,9 @@
         <title>JSP Page</title>
     </head>
     <body>
-        Lecturer: <input type="text" readonly="readonly" value="${requestScope.lecturer.name}"/>
+        
         <form action="timetable" method="GET">
+            Lecturer: <input type="text"  value="${requestScope.lecturer.name}"/>
             <input type="hidden" name="lid" value="${param.id}"/>
             From: <input type="date" name="from" value="${requestScope.from}"/>
             To: <input type="date" name="to" value="${requestScope.to}"/>
@@ -35,7 +36,7 @@
                         <td>
                             <c:forEach items="${requestScope.sessions}" var="ses">
                                 <c:if test="${helper.compare(ses.getDate(),d) eq 0 and (ses.timeslot.id eq slot.id)}">
-                                    <a href="att?id=${ses.id}">${ses.group.name}-${ses.group.subject.name}</a>
+                                    <a href="takeatt?id=${ses.id}">${ses.group.name}-${ses.group.subject.name}</a>
                                     <br/>
                                     ${ses.room.name}<br>
                                     <c:if test="${ses.attanded}">
