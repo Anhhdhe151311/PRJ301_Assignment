@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import Model.Account;
+import Model.*;
 
 /**
  *
@@ -29,8 +29,9 @@ public class LoginController extends HttpServlet{
             req.getSession().setAttribute("account", account);
             
             if(account.getRole()==1){
+                Student student = new Dal.StudentDAO().getId(account.getDisplayname());
+                req.setAttribute("student", student);
                 req.getRequestDispatcher("view/student/welcomestudent.jsp").forward(req, resp);
-               
             }
             else if(account.getRole()==2){
                 req.getRequestDispatcher("view/lecturer/welcomelecturer.jsp").forward(req, resp);
