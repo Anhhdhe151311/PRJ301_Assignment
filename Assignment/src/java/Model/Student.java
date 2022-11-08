@@ -13,7 +13,17 @@ import java.util.ArrayList;
 public class Student {
     private int id;
     private String name;
+    private Group group;
     private ArrayList<Group> groups = new ArrayList<>();
+
+    public Group getGroup() {
+        return group;
+    }
+
+    public void setGroup(Group group) {
+        this.group = group;
+    }
+
 
     public int getId() {
         return id;
